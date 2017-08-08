@@ -14,10 +14,22 @@ class LeagueViewController: UIViewController {
     
     @IBOutlet weak var nextButton: BorderButton!
     
+    func selectLeague(leagueType: String){
+        player.desiredLeague = leagueType
+        nextButton.isEnabled = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         player = Player()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let skillViewController = segue.destination as? SkillViewController
+        {
+            skillViewController.player = player
+        }
     }
     
     //Control + drag from view controller in list to view controller in storyboard. then set the segue identifier
@@ -38,10 +50,7 @@ class LeagueViewController: UIViewController {
         selectLeague(leagueType: "coed")
     }
     
-    func selectLeague(leagueType: String){
-        player.desiredLeague = leagueType
-        nextButton.isEnabled = true
-    }
+
     
     /*
     // MARK: - Navigation
