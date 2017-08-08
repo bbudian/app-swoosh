@@ -10,10 +10,14 @@ import UIKit
 
 class LeagueViewController: UIViewController {
     
+    var player: Player!
+    
+    @IBOutlet weak var nextButton: BorderButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        player = Player()
     }
     
     //Control + drag from view controller in list to view controller in storyboard. then set the segue identifier
@@ -21,6 +25,24 @@ class LeagueViewController: UIViewController {
         performSegue(withIdentifier: "skillViewControllerSeque", sender: self)
     }
 
+    @IBAction func onMensTapped(_ sender: Any) {
+        selectLeague(leagueType: "mens")
+        
+    }
+    
+    @IBAction func onWomensTapped(_ sender: Any) {
+        selectLeague(leagueType: "womens")
+    }
+    
+    @IBAction func onCoedTapped(_ sender: Any) {
+        selectLeague(leagueType: "coed")
+    }
+    
+    func selectLeague(leagueType: String){
+        player.desiredLeague = leagueType
+        nextButton.isEnabled = true
+    }
+    
     /*
     // MARK: - Navigation
 
