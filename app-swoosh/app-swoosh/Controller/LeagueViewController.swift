@@ -9,18 +9,17 @@
 import UIKit
 
 class LeagueViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    //Control + drag from view controller in list to view controller in storyboard. then set the segue identifier
+    @IBAction func onNextTapped(_ sender: Any) {
+        performSegue(withIdentifier: "skillViewControllerSeque", sender: self)
+    }
 
     /*
     // MARK: - Navigation
